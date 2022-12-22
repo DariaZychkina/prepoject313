@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add new User</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<h1>Add new User</h1><br>
+<form th:method="post" th:action="@{/addUser}" th:object="${user}" >
+  <table>
+    <tr><td>Username</td>               <td><input th:type="text" th:field="*{username}" required  class="data"></td></tr>
+    <tr><td>Name</td>                   <td><input th:type="text" th:field="*{name}" required  class="data"></td></tr>
+    <tr><td>Surname</td>                <td><input th:type="text" required th:field="*{surname}" class="data"></td></tr>
+    <tr><td>Watched Supernatural?</td>  <td><input th:type="text" required  th:field="*{personWatchedTheSupernatural}" class="data"></td></tr>
+    <tr><td>Password</td>               <td><input th:type="text" th:field="*{password}" required  class="data"></td></tr>
+    <tr><td>Roles</td>                  <td><input type="checkbox" name="roles" th:each="role: ${roles}" th:value="${role.getIdRole()}" th:text="${role.getRole()}" th:field="*{roles}">&nbsp;&nbsp</td></tr>
+    <tr><td colspan="2" height="20px"></td></tr>
+    <tr style="text-align: right;"><td colspan="2"><input type="submit" value="Save User" id="saveButton"/>&nbsp;&nbsp;&nbsp;<a th:href="@{/adminAccount}">Cancel</a></td></tr>
+  </table><br>
+</form>
+</body>
+</html>
