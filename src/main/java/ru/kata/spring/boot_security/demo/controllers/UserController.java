@@ -21,7 +21,7 @@ public class UserController {
     @GetMapping("/")
     public String userAccount(Principal principal, Model model) {
         User user = userService.getUserByName(principal.getName());
-        if (user.getRoles().stream().allMatch(role -> role.getRole().equals("ROLE_ADMIN"))) {
+        if (user.getRoles().stream().anyMatch(role -> role.getRole().equals("ROLE_ADMIN"))) {
             model.addAttribute("users", userService.getUsersList());
             return "/adminAccount";
         }
