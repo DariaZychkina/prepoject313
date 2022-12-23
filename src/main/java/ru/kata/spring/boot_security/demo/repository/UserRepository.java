@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import ru.kata.spring.boot_security.demo.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    @Query("select u from User u join fetch u.roles where u.name = :userName")
+    @Query("select u from User u join fetch u.roles where u.username = :userName")
     User findByName(@Param("userName") String userName);
 }
