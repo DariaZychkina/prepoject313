@@ -57,11 +57,13 @@ public class UserServiceImp implements UserService, UserDetailsService {
     @Transactional
     @Override
     public boolean updateUser(User user) {
-        if (getById(user.getId()) == null){
+    if (user == null){
             return false;
         }
         else {
-            userRepository.save(user);
+            User userUpdate = new User(user.getUsername(), user.getName(), user.getSurname(), user.getPersonWatchedTheSupernatural(), cryptPasswordEncoder.encode(user.getPassword()), user.getRoles());
+            userUpdate.setId(user.getId());
+            userRepository.saveAndFlush(userUpdate);
             return true;
         }
     }
