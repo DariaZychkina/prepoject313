@@ -35,7 +35,7 @@ public class User implements UserDetails {
             name = "usersRoles",
             joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "roleId", referencedColumnName = "id"))
-    private Collection<Role> roles = new ArrayList<>();
+    private Set<Role> roles = new HashSet<>();
     @Column
     @NonNull
     private String password;
@@ -44,7 +44,7 @@ public class User implements UserDetails {
 
     public User() {}
 
-    public User(String username, String name, String surname, String personWatchedTheSupernatural, String password, Collection<Role> roles) {
+    public User(String username, String name, String surname, String personWatchedTheSupernatural, String password, Set<Role> roles) {
         this.username = username;
         this.name = name;
         this.surname = surname;
@@ -103,7 +103,7 @@ public class User implements UserDetails {
         return personWatchedTheSupernatural;
     }
 
-    public Collection<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
@@ -139,7 +139,7 @@ public class User implements UserDetails {
         this.confirmPass = confirmPass;
     }
 
-    public void setRoles(Collection<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
