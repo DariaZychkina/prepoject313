@@ -16,7 +16,7 @@ public class Role implements GrantedAuthority {
     private String role;
     @Transient
     @ManyToMany(mappedBy = "roles")
-    private Collection<User> users = new ArrayList<>();
+    private Set<User> users = new HashSet<>();
 
     public Role() {}
 
@@ -40,7 +40,7 @@ public class Role implements GrantedAuthority {
         this.role = role;
     }
 
-    public Collection<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
