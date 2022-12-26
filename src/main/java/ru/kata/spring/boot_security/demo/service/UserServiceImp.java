@@ -61,9 +61,7 @@ public class UserServiceImp implements UserService, UserDetailsService {
             return false;
         }
         else {
-            User userUpdate = new User(user.getUsername(), user.getName(), user.getSurname(), user.getPersonWatchedTheSupernatural(), cryptPasswordEncoder.encode(user.getPassword()), user.getRoles());
-            userUpdate.setId(user.getId());
-            userRepository.saveAndFlush(userUpdate);
+            userRepository.save(user);
             return true;
         }
     }
