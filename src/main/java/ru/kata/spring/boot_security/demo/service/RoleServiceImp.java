@@ -16,7 +16,7 @@ public class RoleServiceImp implements RoleService {
     }
 
     @Override
-    public Set<Role> getAllRoles() {
-        return (Set<Role>) roleRepository.findAll();
+    public Collection<Role> getAllRoles() {
+        return roleRepository.findAll();
     }
 }
